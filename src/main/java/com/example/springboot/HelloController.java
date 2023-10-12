@@ -10,7 +10,7 @@ public class HelloController
 	@RequestMapping("/")
 	public String index() 
 	{
-		String message1 		= "Greetings from Spring Boot + TanzuZZZ! The Custom Value Be: | ";
+		String message1 		= "Greetings from Spring Boot + Tanzu! The Custom Value Be: | ";
 		String message2  		= "| The last part!";		
 		String messageOut 		= null;
 		String messsageFromVar 	= null;

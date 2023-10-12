@@ -25,22 +25,30 @@
             "name": "Launch Application",
             "request": "launch",
             "mainClass": "com.example.springboot.Application",
-            "env": 
-            {
+            "env": {
                 "MY_VARIABLE": "ValueFrom: VSCode: launch.json"
-            },            
+            },
             "projectName": "demo"
         },
         {
             "type": "java",
             "name": "Launch CommandLineController",
-            "request": "launch",            
-            "mainClass": "com.eric.controller.CommandLineController",      
+            "request": "launch",
+            "mainClass": "com.eric.controller.CommandLineController",
             "projectName": "quotes",
-            "args": 
-            [
+            "args": [
                 "-G"
-            ],
+            ]
+        },
+        {
+            "type": "java",
+            "name": "Tanzu: Debug Remote Config - tanzu-java-web-app-aks - default",
+            "request": "attach",
+            "port": 20000,
+            "hostName": "localhost",
+            "preLaunchTask": "tanzuWorkload: deployAndConnect - tanzu-java-web-app-aks - default",
+            "preRestartTask": "tanzuWorkload: deployAndConnect - tanzu-java-web-app-aks - default",
+            "postDebugTask": "tanzuManagement: stopPortForward - tanzu-java-web-app-aks - default"
         }
     ]
 }

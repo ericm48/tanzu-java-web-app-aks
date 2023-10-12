@@ -1,6 +1,6 @@
 spring:
   application:
-    name: tanzu-java-web-app
+    name: tanzu-java-web-app-aks
 env: 
   - name: MY_VARIABLE
     value: "ValueFrom: application.yaml-1"
