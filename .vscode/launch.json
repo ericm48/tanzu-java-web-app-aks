@@ -1,0 +1,46 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Tanzu: Debug Remote Config",
+            "request": "attach",
+            "port": 9005,
+            "hostName": "localhost",
+            "preLaunchTask": "tanzuWorkload: Deploy And Connect tanzu-java-web-app",
+            "preRestartTask": "tanzuWorkload: Deploy And Connect tanzu-java-web-app",
+            "postDebugTask": "tanzuManagement: Kill Port Forward tanzu-java-web-app"
+        },
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch Application",
+            "request": "launch",
+            "mainClass": "com.example.springboot.Application",
+            "env": 
+            {
+                "MY_VARIABLE": "ValueFrom: VSCode: launch.json"
+            },            
+            "projectName": "demo"
+        },
+        {
+            "type": "java",
+            "name": "Launch CommandLineController",
+            "request": "launch",            
+            "mainClass": "com.eric.controller.CommandLineController",      
+            "projectName": "quotes",
+            "args": 
+            [
+                "-G"
+            ],
+        }
+    ]
+}

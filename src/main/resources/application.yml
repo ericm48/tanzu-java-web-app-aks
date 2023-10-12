@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: tanzu-java-web-app
+env: 
+  - name: MY_VARIABLE
+    value: "ValueFrom: application.yaml-1"
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"  
+  endpoint:
+    health:
+      show-details: always
+  env: 
+    - name: MY_VARIABLE
+      value: "ValueFrom: application.yaml-2"
