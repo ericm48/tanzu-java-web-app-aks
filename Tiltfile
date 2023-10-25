@@ -1,8 +1,8 @@
 update_settings( max_parallel_updates = 3 , k8s_upsert_timeout_secs = 60 , suppress_unused_image_warnings = None ) 
 
-SOURCE_IMAGE = os.getenv("SOURCE_IMAGE", default='ericmtaptestdemoacr.azurecr.io/ericmtaptestdemoacr/tap-1.5.4/workloads/tanzu-java-web-app-aks-dev1')
+SOURCE_IMAGE = os.getenv("SOURCE_IMAGE", default='ericmtaptestdemoacr.azurecr.io/ericmtaptestdemoacr/tap-1.5.4/workloads/tanzu-java-web-app-aks-default')
 LOCAL_PATH = os.getenv("LOCAL_PATH", default='.')
-NAMESPACE = os.getenv("NAMESPACE", default='dev1')
+NAMESPACE = os.getenv("NAMESPACE", default='default')
 
 allow_k8s_contexts('tap-cluster-154') 
 
