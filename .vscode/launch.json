@@ -47,7 +47,6 @@
             "port": 20000,
             "hostName": "localhost",
             "preLaunchTask": "tanzuWorkload: deployAndConnect - tanzu-java-web-app-aks - default",
-            "preRestartTask": "tanzuWorkload: deployAndConnect - tanzu-java-web-app-aks - default",
             "postDebugTask": "tanzuManagement: stopPortForward - tanzu-java-web-app-aks - default"
         },
         {
@@ -59,6 +58,6 @@
             "preLaunchTask": "tanzuWorkload: Deploy And Connect tanzu-java-web-app-aks",
             "preRestartTask": "tanzuWorkload: Deploy And Connect tanzu-java-web-app-aks",
             "postDebugTask": "tanzuManagement: Stop Port Forward tanzu-java-web-app-aks"
-        }        
+        }
     ]
 }
