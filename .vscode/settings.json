@@ -1,5 +1,6 @@
 {
     "java.server.launchMode": "Standard",
     "java.compile.nullAnalysis.mode": "disabled",
-    "tanzu.trackedNamespaces": "default"
+    "tanzu.trackedNamespaces": "default",
+    "tanzu.namespace": ""
 }
