@@ -38,6 +38,10 @@ public class HelloSpringController
 		{
 			messageOut = message1 + messsageFromVar + message2; 
 		}
+		else
+		{
+			messageOut = message1 + message2; 
+		}
 
 		System.out.println( messageOut );
 
