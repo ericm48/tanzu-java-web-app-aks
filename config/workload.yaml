@@ -17,6 +17,8 @@ spec:
       ref:
         branch: main
   env: 
+    - name: BP_JVM_VERSION
+      value: "17"
     - name: MY_VARIABLE
       value: "Value From: workload.yaml"
 
