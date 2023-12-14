@@ -28,10 +28,12 @@ public class HelloSpringController
         logger.debug("Begins...");
 
 		String message1 		= "Greetings from Spring Boot + Tanzu!! The Custom Value Be: | ";
-		String message2  		= "| The last part!";		
+		String message2  		= "| The last part!";	
+
 		String messageOut 		= null;
 		String messsageFromVar 	= null;
-		
+		String messageNoVar     = "** NO EVAR PRESENT **";
+
 		messsageFromVar = System.getenv("MY_VARIABLE");
 
 		if ( messsageFromVar != null )
@@ -40,7 +42,7 @@ public class HelloSpringController
 		}
 		else
 		{
-			messageOut = message1 + message2; 
+			messageOut = message1 + messageNoVar + message2; 
 		}
 
 		System.out.println( messageOut );
