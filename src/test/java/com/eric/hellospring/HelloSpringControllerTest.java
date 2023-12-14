@@ -22,7 +22,16 @@ class HelloSpringControllerTest
     @Autowired
     private MockMvc mockMvc;
 
-    private static String theResponse = "Greetings from Spring Boot + Tanzu!!";
+    private static String theBaseResponse = "Greetings from Spring Boot + Tanzu!!";
+    private static String theFullResponse = "Greetings from Spring Boot + Tanzu!! The Custom Value Be: | ValueFrom: Local Bash-OS| The last part!";
+
+@Test
+    void testRootURLResponseFAIL() throws Exception 
+    {        
+        mockMvc
+            .perform(get("/"))
+            .andExpect(status().isNotFound());
+    }    
 
     @Test
     void testGreetBaseResponseSUCCESS() throws Exception 
@@ -32,18 +41,16 @@ class HelloSpringControllerTest
             .perform(get("/greet"))
             .andExpect(status().isOk());
 
-        assertTrue( controller.greet().contains( theResponse ) );            
+        assertTrue( controller.greet().contains( theBaseResponse ) );            
     }
 
     @Test
     void testGreetFullResponseSUCCESS() throws Exception 
     {        
-        String fullResponse = "Greetings from Spring Boot + Tanzu!! The Custom Value Be: | ValueFrom: Local Bash-OS| The last part!";
-        
         mockMvc
             .perform(get("/greet"))
             .andExpect(status().isOk())
-            .andExpect(content().string(fullResponse));
+            .andExpect(content().string( theFullResponse ));
 
     }    
 }
