@@ -45,8 +45,6 @@ public class HelloSpringController
 			messageOut = message1 + messageNoVar + message2; 
 		}
 
-		System.out.println( messageOut );
-
         logger.info("messageOut: " + messageOut);
 
         logger.debug("Ends...");
