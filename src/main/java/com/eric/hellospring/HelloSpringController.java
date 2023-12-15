@@ -2,12 +2,8 @@ package com.eric.hellospring;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
 
 @RestController
 public class HelloSpringController 
