@@ -42,12 +42,21 @@
         },
         {
             "type": "java",
+            "name": "Tanzu: Debug Remote Config - tanzu-java-web-app-aks - dev3",
+            "request": "attach",
+            "port": 20000,
+            "hostName": "localhost",
+            "preLaunchTask": "tanzuWorkload: deployAndConnect - tanzu-java-web-app-aks - dev3",
+            "postDebugTask": "tanzuManagement: stopPortForward - tanzu-java-web-app-aks - dev3"
+        },
+        {
+            "type": "java",
             "name": "Tanzu: Debug Remote Config - tanzu-java-web-app-aks - default",
             "request": "attach",
             "port": 20000,
             "hostName": "localhost",
-            "preLaunchTask": "tanzuWorkload: deployAndConnect - tanzu-java-web-app-aks - default",
-            "postDebugTask": "tanzuManagement: stopPortForward - tanzu-java-web-app-aks - default"
+            "preLaunchTask": "tanzuWorkload: Deploy And Connect tanzu-java-web-app-aks - default",
+            "postDebugTask": "tanzuManagement: Stop Port Forward tanzu-java-web-app-aks - default"
         },
         {
             "type": "java",

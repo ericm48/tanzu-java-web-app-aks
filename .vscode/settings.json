@@ -1,6 +1,12 @@
 {
     "java.server.launchMode": "Standard",
     "java.compile.nullAnalysis.mode": "disabled",
-    "tanzu.trackedNamespaces": "default",
-    "java.configuration.updateBuildConfiguration": "interactive"
+    "tanzu.trackedNamespaces": "default,dev3",
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "tanzu.localPath": ".",
+    "tanzu.waitTimeout": "",
+    "tanzu.workloadType": "web",
+    "tanzu.namespace": "dev3",
+    "tanzu.sourceImage": "ericmtaptestdemoacr.azurecr.io/tap-1.7.3/workloads/tanzu-java-web-app-aks-dev3",
+    "tanzu.confirmApplyConfig": false
 }
