@@ -1,27 +1,56 @@
-# tanzu-java-web-app
+# Welcome to the tanzu-java-web-app-aks project!
 
-This is a sample of a Java Spring app that works with Tilt and the Tanzu Application Platform.
+This is a sample of the Tanzu Java Web App Deployed to TAP-1.7.3 on AKS, with vsCode & Tilt.
+
 
 ## Dependencies
-1. [kubectl CLI](https://kubernetes.io/docs/tasks/tools/)
-1. [Tilt version >= v0.23.2](https://docs.tilt.dev/install.html)
-1. Tanzu CLI and the apps plugin v0.2.0 which are provided as part of [Tanzu Application Platform](https://network.tanzu.vmware.com/products/tanzu-application-platform)
-1. A cluster with Tanzu Application Platform, and the "Default Supply Chain", plus its dependencies. This supply chains is part of [Tanzu Application Platform](https://network.tanzu.vmware.com/products/tanzu-application-platform).
+| Item    | Version |
+| ------- | ------------------ |
+| 1. kubectl-cli | > 1.22.x |
+| 2. tilt-cli | > v0.32.0 |
+| 3. TAP | > 1.7.3 |
+| 4. TAP Supply Chain | - basic <br> - testing <br> - testing_scanning |
+| 5. vsCode-Plugin: Tanzu Developer Tools | - 2023-10-20 |
 
-## Running the sample
+## Setup Commands:
 
-Start the app deployment by running:
-
+Login to Azure with cli:
 ```
-tilt up
+az login
 ```
 
-You can hit the spacebar to open the UI in a browser. 
+Verify correct account:
+```
+az account list
+```
 
-- > If you see an "Update error" message like the one below, then just follow the instructions and allow that context:
-    ```
-    Stop! tap-beta2 might be production.
-    If you're sure you want to deploy there, add:
-        allow_k8s_contexts('tap-beta2')
-    to your Tiltfile. Otherwise, switch k8s contexts and restart Tilt.
-    ```
+Verify correct subscription:
+```
+az account set --subscription ...
+```
+
+Login to target-cluster where TAP is installed:
+```
+az aks get-credentials --resource-group cloud-shell-storage-southcentralus --name npc-tap-cluster-173
+```
+
+
+
+
+
+## Funny Things To Watch Out For:
+| Date    | Description |
+| ------- | ------------------ |
+| 23-Feb-2024: | - vsCode PlugIn must be removed/reinstalled upon each vsCode Startup. |
+
+
+## Notes:
+
+| Date     | Description |
+| -------- | ------- |
+| 23-Feb-2024:   | - Updated for TAP-1.7.3. <br> - Uses Azure-K8s: 1.27.7    |
+| 20-Feb-2024:  | - Initial Implementation     |
+
+
+
+
