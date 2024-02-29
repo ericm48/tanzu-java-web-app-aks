@@ -144,8 +144,31 @@ You should see similiar to [ simple attach ]:
 
 <https://tanzu-java-web-app-aks.dev1.tap-173-v2.azure.csp-si-tiger.net/actuator>
 
+## vsCode Remote Debugging:
 
-5. For remote debugging
+1. Locate the workload-tanzu-java-web-app-aks.yaml file in Explorer view, rt-click on it, select:
+```
+Tanzu: Java Debug Start
+```
+Looks like:
+![screenshot](./media/vsCodeTanzuJavaDebugStart.jpg) 
+
+2. Again, depending on the state of the app, this may just attach, or trigger a rebuild, then attach.  When ready you should see something like:
+![screenshot](./media/vsCodeTanzuJavaDebugReady.jpg) 
+
+3. Once debug is engaged, make sure you set some breakpoints in the HellowSpringController.java, and you should see the debugging view, (upper right) as well as debugging control-icons (upper left).  Looks like:
+![screenshot](./media/vsCodeTanzuJavaDebugEngaged.jpg) 
+
+4. Hit the /greet endpoint from the browser.
+<https://tanzu-java-web-app-aks.dev1.tap-173-v2.azure.csp-si-tiger.net/greet>
+
+5. You should see the browser start spinning, then vsCode should jump to the front with control paused on the first breakpoint you've set.   Should look like:
+![screenshot](./media/vsCodeTanzuJavaDebugBreakPoint.jpg) 
+
+6. Select the "Continue" button, or "Step-Over" buttons in above Right.  Exercise as many times as you'd like.  You can play around, change variable values, etc.
+
+7. To end, select the "Disconnect" button in above right.  Looks like:
+![screenshot](./media/vsCodeTanzuJavaDebugDisconnect.jpg) 
 
 
 
