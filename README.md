@@ -102,7 +102,7 @@ curl -Lk https://tanzu-java-web-app-aks.dev1.tap-173-v2.azure.csp-si-tiger.net/a
 
 
 ## Demo URLs:
-| Name| Link |
+|Name |Link |
 | -------- | ------- |
 | TAP-Portal/GUI: | <http://tap-gui.tap-173-v2.azure.csp-si-tiger.net> |
 | Workload Trigger: | <https://tanzu-java-web-app-aks.dev1.tap-173-v2.azure.csp-si-tiger.net/greet> |
