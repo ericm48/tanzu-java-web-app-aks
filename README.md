@@ -90,12 +90,24 @@ kp -n dev1 image trigger tanzu-java-web-app-aks
 kp -n dev1 build status --bom tanzu-java-web-app-aks | jq | tee ~/data/json/tanzu-java-web-app-aks-manifest.json
 ```
 
+6. curl the workload endpoint:
+```
+curl -Lk https://tanzu-java-web-app-aks.dev1.tap-173-v2.azure.csp-si-tiger.net/greet
+```
+
+7. curl the workload actuator:
+```
+curl -Lk https://tanzu-java-web-app-aks.dev1.tap-173-v2.azure.csp-si-tiger.net/actuator
+```
+
+
 ## Demo URLs:
-
-TAP-Portal/GUI: <http://tap-gui.tap-173-v2.azure.csp-si-tiger.net> 
-Workload Trigger: <https://tanzu-java-web-app-aks.dev1.tap-173-v2.azure.csp-si-tiger.net/greet>
-Workload Actuator: <https://tanzu-java-web-app-aks.dev1.tap-173-v2.azure.csp-si-tiger.net/actuator>
-
+| Name| Link |
+| -------- | ------- |
+| TAP-Portal/GUI: | <http://tap-gui.tap-173-v2.azure.csp-si-tiger.net> |
+| Workload Trigger: | <https://tanzu-java-web-app-aks.dev1.tap-173-v2.azure.csp-si-tiger.net/greet> |
+| Workload Actuator: | <https://tanzu-java-web-app-aks.dev1.tap-173-v2.azure.csp-si-tiger.net/actuator> |
+| Tilt UI: | <http://localhost:10350/r/tanzu-java-web-app-aks/overview> |
 
 
 
