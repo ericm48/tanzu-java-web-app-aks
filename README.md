@@ -55,6 +55,19 @@ Docker Login to Azure ACR:
 ```
 docker login -u cspsitigeracreast cspsitigeracreast.azurecr.io
 ```
+
+Make sure the workload app is deployed:
+```
+tanzu app workload list -A
+```
+Looks like:
+![screenshot](./media/workload-deployed.jpg)
+
+Deploy the workload to ns: dev1, if needed [ from git repo root ]:
+```
+tanzu -n dev1 apps workload create tanzu-java-web-app-aks -f ./config/workload-tanzu-java-web-app-aks.yaml
+```
+
 ## Demo Commands:
 
 Handy commands used with tmux.
@@ -107,6 +120,25 @@ curl -Lk https://tanzu-java-web-app-aks.dev1.tap-173-v2.azure.csp-si-tiger.net/a
 | Workload Trigger: | <https://tanzu-java-web-app-aks.dev1.tap-173-v2.azure.csp-si-tiger.net/greet> |
 | Workload Actuator: | <https://tanzu-java-web-app-aks.dev1.tap-173-v2.azure.csp-si-tiger.net/actuator> |
 | Tilt UI: | <http://localhost:10350/r/tanzu-java-web-app-aks/overview> |
+
+## vsCode:
+
+1. In vsCode Terminal, verify vsCode is logged in, and can access tap cluster:
+```
+kubectl get nodes
+```
+You should see similiar to:
+![screenshot](./media/vsCode-k8s-cluster.jpg)
+
+2. Locate the Tiltfile, rt-click on it, select 'Tanzu Live Update Start'
+You should see similiar to:
+![screenshot](./media/vsCodeTanzuLiveUpdateStart.jpg)
+
+3. Depending on the state of the cluster, app you should see Tanzu Live Update Start.  Then you should see it attach, or trigger a rebuild/redeploy, then attach.
+You should see similiar to [ simple attach ]:
+![screenshot](./media/vsCodeTanzuLiveUpdateStarted.jpg) 
+
+
 
 
 
