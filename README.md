@@ -138,14 +138,14 @@ You should see similiar to:
 You should see similiar to [ simple attach ]:
 ![screenshot](./media/vsCodeTanzuLiveUpdateStarted.jpg) 
 
-4. You should be able to exercise the app by browsing to the endpoints:
-
+4. Exercise the app by browsing to the endpoints:
 
 <https://tanzu-java-web-app-aks.dev1.tap-173-v2.azure.csp-si-tiger.net/greet>
 
 <https://tanzu-java-web-app-aks.dev1.tap-173-v2.azure.csp-si-tiger.net/actuator>
 
 
+5. For remote debugging
 
 
 
@@ -154,6 +154,7 @@ You should see similiar to [ simple attach ]:
 ## Funny Things To Watch Out For:
 | Date    | Description |
 | ------- | ------------------ |
+| 29-Feb-2024: | - When in doubt on trouble-shooting, blow away BOTH image repos from your ACR. |
 | 23-Feb-2024: | - vsCode PlugIn must be removed/reinstalled upon each vsCode Startup. |
 
 
