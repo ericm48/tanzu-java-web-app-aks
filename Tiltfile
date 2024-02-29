@@ -11,7 +11,7 @@ NAMESPACE = os.getenv("NAMESPACE", default='dev1')
 
 k8s_custom_deploy(
     'tanzu-java-web-app-aks',
-    apply_cmd="tanzu apps workload apply -f config/workload.yaml --live-update" +
+    apply_cmd="tanzu apps workload apply -f config/workload-tanzu-java-web-app-aks.yaml --live-update" +
                " --local-path " + LOCAL_PATH +
                " --source-image " + SOURCE_IMAGE +
                " --namespace " + NAMESPACE +

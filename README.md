@@ -100,8 +100,8 @@ curl -Lk https://tanzu-java-web-app-aks.dev1.tap-173-v2.azure.csp-si-tiger.net/g
 curl -Lk https://tanzu-java-web-app-aks.dev1.tap-173-v2.azure.csp-si-tiger.net/actuator
 ```
 
-
 ## Demo URLs:
+|Item |Link |
 | -------- | ------- |
 | TAP-Portal/GUI: | <http://tap-gui.tap-173-v2.azure.csp-si-tiger.net> |
 | Workload Trigger: | <https://tanzu-java-web-app-aks.dev1.tap-173-v2.azure.csp-si-tiger.net/greet> |
