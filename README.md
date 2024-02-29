@@ -138,6 +138,12 @@ You should see similiar to:
 You should see similiar to [ simple attach ]:
 ![screenshot](./media/vsCodeTanzuLiveUpdateStarted.jpg) 
 
+4. You should be able to exercise the app by browsing to the endpoints:
+
+
+<https://tanzu-java-web-app-aks.dev1.tap-173-v2.azure.csp-si-tiger.net/greet>
+
+<https://tanzu-java-web-app-aks.dev1.tap-173-v2.azure.csp-si-tiger.net/actuator>
 
 
 
