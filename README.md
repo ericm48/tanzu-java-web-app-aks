@@ -3,7 +3,7 @@
 This is a sample of the Tanzu Java Web App Deployed to TAP-1.7.3 on AKS, with vsCode & Tilt.
 
 
-## Dependencies
+## Dependencies:
 | Item    | Version |
 | ------- | ------------------ |
 | 1. kubectl-cli | > 1.22.x |
@@ -15,15 +15,21 @@ This is a sample of the Tanzu Java Web App Deployed to TAP-1.7.3 on AKS, with vs
 | 7. vsCode-Plugin: Tanzu Developer Tools | - 2023-10-20 |
 
 ## Notes:
-
 | Date     | Description |
 | -------- | ------- |
 | 29-Feb-2024:  | - Some of my kubectl commands are aliased by 'k' <br> Ex: 'k get nodes' is 'kubectl get nodes'   |
 | 23-Feb-2024:  | - Updated for TAP-1.7.3. <br> - Uses Azure-K8s: 1.27.7    |
 | 20-Feb-2024:  | - Initial Implementation     |
 
-## Setup Commands:
+## Current Configuration:
+In the example below, please note the following values:
+| Item     | Value |
+| -------- | ------- |
+| Cluster-Name:  | npc-tap-cluster-173-v2 |
+| Workload-Namespace:  | dev1 |
+| Workload-Name: | tanzu-java-web-app-aks |
 
+## Setup Commands:
 Login to Azure with cli:
 ```
 az login
@@ -69,7 +75,6 @@ tanzu -n dev1 apps workload create tanzu-java-web-app-aks -f ./config/workload-t
 ```
 
 ## Demo Commands:
-
 Handy commands used with tmux.
 
 1. Watch on ALL workloads list:
@@ -122,7 +127,6 @@ curl -Lk https://tanzu-java-web-app-aks.dev1.tap-173-v2.azure.csp-si-tiger.net/a
 | Tilt UI: | <http://localhost:10350/r/tanzu-java-web-app-aks/overview> |
 
 ## vsCode:
-
 1. In vsCode Terminal, verify vsCode is logged in, and can access tap cluster:
 ```
 kubectl get nodes
@@ -145,7 +149,6 @@ You should see similiar to [ simple attach ]:
 <https://tanzu-java-web-app-aks.dev1.tap-173-v2.azure.csp-si-tiger.net/actuator>
 
 ## vsCode Remote Debugging:
-
 1. Locate the workload-tanzu-java-web-app-aks.yaml file in Explorer view, rt-click on it, select:
 ```
 Tanzu: Java Debug Start
@@ -170,9 +173,76 @@ Looks like:
 7. To end, select the "Disconnect" button in above right.  Looks like:
 ![screenshot](./media/vsCodeTanzuJavaDebugDisconnect.jpg) 
 
+A couple of things to watch out for with vsCode:
+1.  Be aware of 2 files under .vscode folder namely:
+    - settings.json
+    - launch.json
 
+    These files are typically EXCLUDED from your source control provider.
 
+2.  When you first import the project into vsCode, these files will get auto-populated with the current name of the workload, cluster, namespace, image repo name, etc. from the workload.yaml and Tiltfile.  However, if you change the any of these values in the workload.yaml, or Tiltfile, these files (launch.json & settings.json) WILL NOT get automatically updated for you.  You will have to MANUALLY UPDATE them.   This is especially the case of when you rename something.   
 
+Below are the relevant sections from mine:
+
+launch.json:
+```
+...
+{
+    "type": "java",
+    "name": "Tanzu: Debug Remote Config",
+    "request": "attach",
+    "port": 9005,
+    "hostName": "localhost",
+    "preLaunchTask": "tanzuWorkload: Deploy And Connect tanzu-java-web-app",
+    "preRestartTask": "tanzuWorkload: Deploy And Connect tanzu-java-web-app",
+    "postDebugTask": "tanzuManagement: Kill Port Forward tanzu-java-web-app"
+},
+{
+    "type": "java",
+    "name": "Launch Application",
+    "request": "launch",
+    "mainClass": "com.eric.hellospring.WebApplication",
+    "env": {
+        "MY_VARIABLE": "ValueFrom: VSCode: launch.json"
+    },
+    "projectName": "demo"
+},
+{
+    "type": "java",
+    "name": "Tanzu: Debug Remote Config - tanzu-java-web-app-aks - dev1",
+    "request": "attach",
+    "port": 20000,
+    "hostName": "localhost",
+    "preLaunchTask": "tanzuWorkload: deployAndConnect - tanzu-java-web-app-aks - dev1",
+    "postDebugTask": "tanzuManagement: stopPortForward - tanzu-java-web-app-aks - dev1"
+},
+{
+    "type": "java",
+    "name": "Tanzu: Debug Remote Config - tanzu-java-web-app-aks",
+    "request": "attach",
+    "port": 20000,
+    "hostName": "localhost",
+    "preLaunchTask": "tanzuWorkload: Deploy And Connect tanzu-java-web-app-aks",
+    "preRestartTask": "tanzuWorkload: Deploy And Connect tanzu-java-web-app-aks",
+    "postDebugTask": "tanzuManagement: Stop Port Forward tanzu-java-web-app-aks"
+}
+...
+```
+settings.json:
+```
+{
+    "java.server.launchMode": "Standard",
+    "java.compile.nullAnalysis.mode": "disabled",
+    "tanzu.trackedNamespaces": "default,dev1",
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "tanzu.localPath": ".",
+    "tanzu.waitTimeout": "",
+    "tanzu.workloadType": "web",
+    "tanzu.namespace": "dev1",
+    "tanzu.sourceImage": "cspsitigeracreast.azurecr.io/tap-1.7.3/workloads/tanzu-java-web-app-aks-dev1",
+    "tanzu.confirmApplyConfig": false
+}
+```
 
 ## Funny Things To Watch Out For:
 | Date    | Description |
